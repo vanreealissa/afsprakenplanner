@@ -1,0 +1,82 @@
+/* Eenvoudige stylesheet zonder build-stap. Pas --accent aan per project. */
+:root {
+    --accent: #8a3b5c;
+    --accent-soft: #f4e6ec;
+    --bg: #f5f6f3;
+    --surface: #ffffff;
+    --ink: #17191a;
+    --muted: #5d6562;
+    --line: #dde1da;
+    --danger: #a23a2a;
+    --ok: #2f6b3a;
+    --radius: 10px;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.55; }
+a { color: var(--accent); }
+img { max-width: 100%; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+.site-header { background: var(--surface); border-bottom: 1px solid var(--line); }
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; flex-wrap: wrap; }
+.brand { font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); letter-spacing: -0.01em; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav a:hover, .nav a.active { color: var(--ink); }
+
+main { padding-block: 36px 64px; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 8px; }
+h2 { font-size: 1.25rem; margin: 0 0 12px; }
+.lead { color: var(--muted); font-size: 1.1rem; margin: 0 0 28px; max-width: 60ch; }
+.muted { color: var(--muted); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.stack { display: grid; gap: 16px; }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.between { justify-content: space-between; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; padding: 9px 16px; border-radius: 8px; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+.btn:hover { filter: brightness(1.1); }
+.btn.secondary { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.btn.danger { background: var(--surface); color: var(--danger); border-color: var(--line); }
+.btn.small { padding: 5px 11px; font-size: 0.9rem; }
+.btn-link { background: none; border: 0; padding: 0; color: var(--danger); font: inherit; cursor: pointer; text-decoration: underline; }
+
+form .field { display: grid; gap: 6px; margin-bottom: 16px; }
+label { font-weight: 600; font-size: 0.95rem; }
+input[type=text], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=date], input[type=search], select, textarea {
+    width: 100%; font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);
+}
+textarea { min-height: 120px; resize: vertical; }
+input:focus, select:focus, textarea:focus, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hint { color: var(--muted); font-size: 0.85rem; }
+.error { color: var(--danger); font-size: 0.9rem; }
+.is-invalid { border-color: var(--danger) !important; }
+
+.alert { border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; }
+.alert.success { background: #e6f2e8; color: var(--ok); border: 1px solid #c4dfc9; }
+.alert.error { background: #f8e8e4; color: var(--danger); border: 1px solid #ecc9c0; }
+
+.badge { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 0.8rem; font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.table-wrap { overflow-x: auto; }
+.num { font-variant-numeric: tabular-nums; }
+
+.pagination { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; padding: 0; margin: 24px 0 0; }
+.pagination a, .pagination span { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); text-decoration: none; color: var(--ink); }
+.pagination .active span { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pagination .disabled span { color: var(--muted); }
+
+.site-footer { border-top: 1px solid var(--line); padding-block: 20px; color: var(--muted); font-size: 0.85rem; }
+
+/* Tijdkeuze: het gekozen tijdstip krijgt de accentkleur. */
+label.btn input[type=radio] { accent-color: var(--accent); margin: 0; }
+label.btn:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
